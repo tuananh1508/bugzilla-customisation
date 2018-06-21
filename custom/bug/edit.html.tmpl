@@ -22,12 +22,12 @@
   [% IF user.can_tag_comments %]
     <div id="bz_ctag_div" class="bz_default_hidden">
       <a href="javascript:void(0)" onclick="YAHOO.bugzilla.commentTagging.hideInput()">x</a>
-        <div>
-          <input id="bz_ctag_add" size="10" placeholder="add tag"
-           maxlength="[% constants.MAX_COMMENT_TAG_LENGTH FILTER html %]">
-          <span id="bz_ctag_autocomp"></span>
-        </div>
-        &nbsp;
+      <div>
+        <input id="bz_ctag_add" size="10" placeholder="add tag"
+              maxlength="[% constants.MAX_COMMENT_TAG_LENGTH FILTER html %]">
+        <span id="bz_ctag_autocomp"></span>
+      </div>
+      &nbsp;
     </div>
     <div id="bz_ctag_error" class="bz_default_hidden">
       <a href="javascript:void(0)" onclick="YAHOO.bugzilla.commentTagging.hideError()">x</a>
@@ -51,22 +51,22 @@
 [% END %]
 
 <script type="text/javascript">
-	<!--
-	[% IF user.is_timetracker %]
-	  var bz_remaining_time = [% bug.remaining_time %];
-	[% END %]
+<!--
+[% IF user.is_timetracker %]
+  var bz_remaining_time = [% bug.remaining_time %];
+[% END %]
 
-	[% IF user.id %]
-	  /* Index all classifications so we can keep track of the classification
-	   * for the selected product, which could control field visibility.
-	   */
-	  var all_classifications = new Array([% bug.choices.product.size %]);
-	  [%- FOREACH product = bug.choices.product %]
-		  all_classifications['[% product.name FILTER js %]'] = '
-			  [%- product.classification.name FILTER js %]';
-	  [%- END %]
-	[% END %]
-	//-->
+[% IF user.id %]
+  /* Index all classifications so we can keep track of the classification
+   * for the selected product, which could control field visibility.
+   */
+  var all_classifications = new Array([% bug.choices.product.size %]);
+  [%- FOREACH product = bug.choices.product %]
+      all_classifications['[% product.name FILTER js %]'] = '
+          [%- product.classification.name FILTER js %]';
+  [%- END %]
+[% END %]
+//-->
 </script>
 
 
