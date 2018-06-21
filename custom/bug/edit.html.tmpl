@@ -1430,7 +1430,7 @@
 						</div>
 					</div>
 				[% END %]
-				<select>
+				<select id="cc" multiple="multiple" size="5">
 				[% IF bug.cc.size %]
 					<div id="cc" multiple="multiple" size="5" [% 'name="cc"' IF bug.user.canedit %] class="field_value">
 						[% FOREACH c = bug.cc %]
