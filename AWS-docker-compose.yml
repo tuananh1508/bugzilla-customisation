@@ -1,6 +1,6 @@
 version: '2'
 services:
-    bugzilla:
+    bugzilla-customisation:
         image: uneet/bugzilla-customisation:$COMMIT
         restart: on-failure
         mem_reservation: 1g
@@ -21,5 +21,5 @@ services:
             driver: awslogs
             options:
                 awslogs-region: ap-southeast-1
-                awslogs-group: bugzilla
+                awslogs-group: bugzilla-customisation
                 awslogs-stream-prefix: ecs
