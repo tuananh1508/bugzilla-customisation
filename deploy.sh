@@ -85,7 +85,7 @@ fi
 ecs-cli configure --cluster unee-t-ins --region ap-southeast-1 --compose-service-name-prefix ecscompose-service-
 test -f aws-env.$STAGE && source aws-env.$STAGE
 
-service=$(grep -A1 services AWS-docker-compose.yml | tail -n1 | tr -cd '[[:alnum:]]')
+service=$(grep -A1 services AWS-docker-compose.yml | tail -n1 | tr -cd '[[:alnum:]]-')
 echo Deploying $service with commit $COMMIT >&2
 
 # Ensure docker compose file's STAGE env is empty for production

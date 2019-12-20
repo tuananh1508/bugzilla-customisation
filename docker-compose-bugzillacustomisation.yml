@@ -1,0 +1,25 @@
+version: '2'
+services:
+    bugzilla-customisation:
+        image: uneet/bugzilla-customisation:158016f
+        restart: on-failure
+        mem_reservation: 1g
+        mem_limit: 3g  # assuming a t2.medium host with 4GB of RAM
+        ports:
+            - 80:80
+        environment:
+            SES_SMTP_USERNAME: AQICAHhnefwE4obg379+wGTJ51ADwlV2HbH906rRwmKZGWDDYwEyTKaVMrcHeBhBqyv1/OBnAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMsO30fP1VhRtQ+8e5AgEQgC+N5gGdThdqBzlNCevWS6uK0ZohgiT/llORUIY5gutgtVWU0PtFjq1WzD79vxpCZQ==
+            SES_SMTP_PASSWORD: rcvKkprE154j6PAViK1KLGNnHWQ8bInMdvHKAYX9
+            SES_VERIFIED_SENDER: dev.case.ins@unee-t.com
+            MYSQL_HOST: auroradb-ins.dev.unee-t.com
+            MYSQL_PORT: 3306
+            MYSQL_DATABASE: bugzilla
+            MYSQL_USER: bugzilla
+            MYSQL_PASSWORD: gooVair7qu
+            PARAMS_URL: https://raw.githubusercontent.com/Unee-T-INS/bugzilla-customisation/master/params/dev-params.json
+        logging:
+            driver: awslogs
+            options:
+                awslogs-region: ap-southeast-1
+                awslogs-group: bugzilla-customisation
+                awslogs-stream-prefix: ecs
