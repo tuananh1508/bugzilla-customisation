@@ -32,6 +32,7 @@ do
 	esac
 done
 AWS_PROFILE=uneet-$STAGE
+echo $AWS_PROFILE
 shift "$((OPTIND-1))"   # Discard the options and sentinel --
 
 export COMMIT=$(git rev-parse --short HEAD)
